@@ -1,38 +1,44 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@tailwind base;
+@layer base {
+  .text_field {
+    @apply p-1;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .gravity {
+    @apply flex items-center justify-center;
   }
-  to {
-    transform: rotate(360deg);
+  .todo_item {
+    box-shadow: 0 0 3px rgb(143, 143, 143);
+    background: white !important;
+    @apply mt-3 !h-auto !py-3;
+  }
+  .todo_item > span {
+    @apply flex justify-between items-center bg-white;
+  }
+  .button {
+    @apply !bg-[#065f46] !h-auto !rounded-[7px];
+  }
+  .button-1 > span {
+    @apply !text-black p-[3px];
+  }
+  .button > span {
+    @apply !text-white p-[3px];
+  }
+  .button-1 {
+    @apply !bg-white !h-auto !rounded-[7px] !border;
+  }
+  .container_icon {
+    @apply p-2 bg-black rounded-[7px] transition duration-300 ease-in-out;
+  }
+  .container_icon > span > svg {
+    @apply !text-white;
+  }
+  .btnCheck {
+    @apply bg-gray-400 hover:bg-[#065f46];
+  }
+  .btnCheckCompleted {
+    @apply hover:bg-gray-400 bg-[#065f46];
+  }
+  .btnRemove {
+    @apply bg-[#d33c49] hover:bg-[#9f1239];
   }
 }
