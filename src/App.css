@@ -26,6 +26,10 @@
   .btn-completed {
     @apply !bg-[#21705b] hover:!bg-[#065f46] !h-auto !rounded-[7px];
   }
+  .acrive-btn-completed {
+    @apply !bg-[#9ba09f] hover:!bg-[#6b7280] !h-auto !rounded-[7px];
+  }
+  .acrive-btn-completed > span,
   .btn-completed > span {
     @apply !text-white p-[3px];
   }
@@ -33,7 +37,7 @@
     @apply !text-black p-[3px];
   }
   .button-1 {
-    @apply !bg-white !h-auto !rounded-[7px] !border;
+    @apply !bg-white hover:!bg-[#f0f0f0] !h-auto !rounded-[7px] !border;
   }
   .container_icon {
     @apply p-3 bg-black rounded-[7px] transition duration-300 ease-in-out;
@@ -58,5 +62,8 @@
   }
   .btnAddTodo {
     @apply !bg-[#21705b] hover:!bg-[#065f46] !text-[15px] !px-3 !py-1 !h-auto !rounded-[7px];
+  }
+  .borderButton {
+    box-shadow: 0px 0px 0px 4px #27dba8;
   }
 }

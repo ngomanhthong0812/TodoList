@@ -11,6 +11,7 @@ export default function TodoIsCompleted({
   handleRemoveClick,
   handleUnCheckClick,
   onShowSetTodoList,
+  isShowTodoCompleted,
 }) {
   const arrayTodoListCompleted = arrayTodoList.filter(
     (item) => item.isCompleted
@@ -25,33 +26,35 @@ export default function TodoIsCompleted({
   }, [arrayTodoListCompleted.length]);
   return (
     <>
-      {arrayTodoListFilter.map((item) => {
-        return (
-          <Button shouldFitContainer className="todo_item" key={item.id}>
-            <span>{item.name}</span>
-            <div className="gravity gap-2">
-              <span
-                className="gravity container_icon btnRemove"
-                onClick={() => handleRemoveClick(item.id)}
-              >
-                <FaRegTrashAlt />
-              </span>
-              <span
-                className="gravity container_icon btnSetTodo"
-                onClick={() => onShowSetTodoList(true,item.id)}
-              >
-                <FaRegPenToSquare />
-              </span>
-              <span
-                className="gravity container_icon btnCheckCompleted"
-                onClick={() => handleUnCheckClick(item.id)}
-              >
-                <FaCheckToSlot />
-              </span>
-            </div>
-          </Button>
-        );
-      })}
+      {isShowTodoCompleted
+        ? arrayTodoListFilter.map((item) => {
+            return (
+              <Button shouldFitContainer className="todo_item" key={item.id}>
+                <span>{item.name}</span>
+                <div className="gravity gap-2">
+                  <span
+                    className="gravity container_icon btnRemove"
+                    onClick={() => handleRemoveClick(item.id)}
+                  >
+                    <FaRegTrashAlt />
+                  </span>
+                  <span
+                    className="gravity container_icon btnSetTodo"
+                    onClick={() => onShowSetTodoList(true, item.id)}
+                  >
+                    <FaRegPenToSquare />
+                  </span>
+                  <span
+                    className="gravity container_icon btnCheckCompleted"
+                    onClick={() => handleUnCheckClick(item.id)}
+                  >
+                    <FaCheckToSlot />
+                  </span>
+                </div>
+              </Button>
+            );
+          })
+        : null}
     </>
   );
 }

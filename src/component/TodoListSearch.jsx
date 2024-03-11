@@ -8,6 +8,7 @@ import Button from "@atlaskit/button";
 import { v4 } from "uuid";
 
 import { IoSearch } from "react-icons/io5";
+import { GrFormNext } from "react-icons/gr";
 
 import Todo from "./Todo";
 export default function TodoListSearch() {
@@ -15,6 +16,7 @@ export default function TodoListSearch() {
   const [textInputSeach, setTextInputSearch] = useState("");
   const [showTodoList, setShowTodoList] = useState(false);
   const [showSetTodoList, setShowSetTodoList] = useState(false);
+  const [showTodoCompleted, setShowTodoCompleted] = useState(false);
   const [countCompleted, setCountCompleted] = useState(0);
   const [idSetInput, setIdSetInput] = useState(null);
 
@@ -71,6 +73,9 @@ export default function TodoListSearch() {
     setShowTodoList(e);
   }, []);
 
+  const onShowTodoPleted = () => {
+    setShowTodoCompleted(!showTodoCompleted);
+  };
   return (
     <>
       <div className="gravity h-[100vh] relative">
@@ -97,7 +102,9 @@ export default function TodoListSearch() {
               isDisabled={false}
               appearance="primary"
               onClick={onShowTodoList}
-              className="container_icon btnAddTodo"
+              className={`container_icon btnAddTodo ${
+                showTodoList ? "borderButton" : ""
+              }`}
             >
               Add Todos
             </Button>
@@ -120,8 +127,20 @@ export default function TodoListSearch() {
             handleRemoveClick={handleRemoveClick}
             onShowSetTodoList={onShowSetTodoList}
           />
-          <Button className="mt-3 btn-completed">
-            Completed Todos {countCompleted}
+          <Button
+            className={`mt-3 ${
+              showTodoCompleted ? " btn-completed borderButton" : "acrive-btn-completed"
+            }`}
+            onClick={onShowTodoPleted}
+          >
+            <span className="gravity gap-2">
+              Completed Todos {countCompleted}
+              <GrFormNext
+                className={`transition duration-300 ease-in-out ${
+                  showTodoCompleted ? " rotate-[90deg]" : ""
+                }`}
+              />
+            </span>
           </Button>
           <TodoIsCompleted
             arrayTodoList={todoList}
@@ -130,7 +149,8 @@ export default function TodoListSearch() {
             handleRemoveClick={handleRemoveClick}
             handleUnCheckClick={handleUnCheckClick}
             onShowSetTodoList={onShowSetTodoList}
-          ></TodoIsCompleted>
+            isShowTodoCompleted={showTodoCompleted}
+          />
         </div>
       </div>
     </>
