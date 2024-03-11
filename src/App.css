@@ -1,35 +1,44 @@
 @tailwind base;
 @layer base {
   .text_field {
-    @apply p-1;
+    @apply p-2 !rounded-[9px] !text-[15px] !border;
+  }
+  .text_field input {
+    @apply !text-[15px];
+  }
+  .title {
+    @apply text-[36px] p-2 gap-2 font-[600] mb-3;
+  }
+  .title-color {
+    @apply bg-gradient-to-r from-blue-400 to-emerald-600 bg-clip-text text-transparent;
   }
   .gravity {
     @apply flex items-center justify-center;
   }
   .todo_item {
-    box-shadow: 0 0 3px rgb(143, 143, 143);
+    box-shadow: 0 0 3px rgb(172, 172, 172);
     background: white !important;
-    @apply mt-3 !h-auto !py-3;
+    @apply mt-3 !h-auto !py-4 !px-3 !text-[15px] !rounded-[9px];
   }
   .todo_item > span {
     @apply flex justify-between items-center bg-white;
   }
-  .button {
-    @apply !bg-[#065f46] !h-auto !rounded-[7px];
+  .btn-completed {
+    @apply !bg-[#21705b] hover:!bg-[#065f46] !h-auto !rounded-[7px];
+  }
+  .btn-completed > span {
+    @apply !text-white p-[3px];
   }
   .button-1 > span {
     @apply !text-black p-[3px];
-  }
-  .button > span {
-    @apply !text-white p-[3px];
   }
   .button-1 {
     @apply !bg-white !h-auto !rounded-[7px] !border;
   }
   .container_icon {
-    @apply p-2 bg-black rounded-[7px] transition duration-300 ease-in-out;
+    @apply p-3 bg-black rounded-[7px] transition duration-300 ease-in-out;
   }
-  .container_icon > span > svg {
+  .container_icon > svg {
     @apply !text-white;
   }
   .btnCheck {
@@ -40,5 +49,14 @@
   }
   .btnRemove {
     @apply bg-[#d33c49] hover:bg-[#9f1239];
+  }
+  .btnSetTodo {
+    @apply bg-[#2f61be] hover:bg-[#1e40af];
+  }
+  .btnSearch {
+    @apply bg-[#2f61be] hover:bg-[#1e40af] !text-[20px] cursor-pointer;
+  }
+  .btnAddTodo {
+    @apply !bg-[#21705b] hover:!bg-[#065f46] !text-[15px] !px-3 !py-1 !h-auto !rounded-[7px];
   }
 }

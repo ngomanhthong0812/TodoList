@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
 import Button from "@atlaskit/button";
-import TrashIcon from "@atlaskit/icon/glyph/trash";
-import CheckCircleOutlineIcon from "@atlaskit/icon/glyph/check-circle-outline";
+
+import { FaRegTrashAlt } from "react-icons/fa";
+import { FaRegPenToSquare, FaCheckToSlot } from "react-icons/fa6";
 
 export default function TodoIsCompleted({
-  ArrayTodoList,
+  arrayTodoList,
   textInputSeach,
   onCountCompleted,
   handleRemoveClick,
-  handleUnCheckClick
+  handleUnCheckClick,
+  onShowSetTodoList,
 }) {
-  const arrayTodoListCompleted = ArrayTodoList.filter(
+  const arrayTodoListCompleted = arrayTodoList.filter(
     (item) => item.isCompleted
   );
   const arrayTodoListFilter =
@@ -28,11 +30,23 @@ export default function TodoIsCompleted({
           <Button shouldFitContainer className="todo_item" key={item.id}>
             <span>{item.name}</span>
             <div className="gravity gap-2">
-              <span className="gravity container_icon btnRemove" onClick={()=>handleRemoveClick(item.id)}>
-                <TrashIcon />
+              <span
+                className="gravity container_icon btnRemove"
+                onClick={() => handleRemoveClick(item.id)}
+              >
+                <FaRegTrashAlt />
               </span>
-              <span className="gravity container_icon btnCheckCompleted" onClick={() => handleUnCheckClick(item.id)}>
-                <CheckCircleOutlineIcon />
+              <span
+                className="gravity container_icon btnSetTodo"
+                onClick={() => onShowSetTodoList(true,item.id)}
+              >
+                <FaRegPenToSquare />
+              </span>
+              <span
+                className="gravity container_icon btnCheckCompleted"
+                onClick={() => handleUnCheckClick(item.id)}
+              >
+                <FaCheckToSlot />
               </span>
             </div>
           </Button>
